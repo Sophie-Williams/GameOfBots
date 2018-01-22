@@ -19,8 +19,8 @@ public static class Helper
                 neigbourCounter++;
             }
           }
-          if (i==4&&j==4)
-            println(neigbourCounter);
+          /*if (i==4&&j==4)
+            println(neigbourCounter);*/
           if (neigbourCounter == 0)
             newIDs[i][j] = -1;
           else if (neigbourCounter == 1 || neigbourCounter == 2)
