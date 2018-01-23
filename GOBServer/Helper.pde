@@ -20,7 +20,7 @@ public static class Helper
             }
           }
           /*if (i==4&&j==4)
-            println(neigbourCounter);*/
+           println(neigbourCounter);*/
           if (neigbourCounter == 0)
             newIDs[i][j] = -1;
           else if (neigbourCounter == 1 || neigbourCounter == 2)
@@ -73,6 +73,19 @@ public static class Helper
   private static boolean isInsideBoard(int i, int j, GOBServer GOB) {
     return i >= 0 && i < GOB.sizeX && j >= 0 && j < GOB.sizeY
       && GOB.IDs[i][j] != 0;
+  }
+
+  public static ArrayList<int[]> getDifference(int[][] one, int[][] two)
+  {//A list of Differences with a list in the list of x and y coordinates of the diffences
+    ArrayList<int[]> Diff = new ArrayList<int[]>();
+    for (int i=0; i<one.length; i++)
+      for (int j=0; j<one[0].length; j++) {
+        if (one[i][j] != two[i][j]) {
+          int[] newA = {i, j};
+          Diff.add(newA);
+        }
+      }
+    return Diff;
   }
 
   public static int getIndexOfLargest( int[] array )

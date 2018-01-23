@@ -12,6 +12,7 @@ long last = 0;
 boolean run = false;
 int ausgewaehlt = 0;
 int speed = 30;
+int num;
 
 void setup() 
 {
@@ -22,6 +23,20 @@ void setup()
   IDs[4][2] = 2;
   frameRate(30);
   c = new Client(this, "127.0.0.1", 12345); // Replace with your server's IP and port
+  num = (int)(random(100))+20;
+  c.write("hello "+ num + "\n");
+  while (c.available() == 0)
+    delay(10);
+  input = c.readString();
+  input = input.substring(0, input.indexOf("\n")); // Only up to the newline
+  if ("hello".equals(split(input, ' ')[0])) {
+    println("hi");
+    if ("OK".equals(split(input, ' ')[2]))
+      println("Alles OK");
+    else
+      println("Nur ein Zuschauer :(");
+  } else
+    print("Fehler");
 }
 
 void draw() {
@@ -49,15 +64,17 @@ void draw() {
       text(i+"|"+j, i*((size*0.87)*2)+((j%2)*(size-5))+(size-5)-11, j*(size*1.5)+size+7);
     }
   }
-  
-  
+
+
   if (c.available() > 0) {
     input = c.readString();
     input = input.substring(0, input.indexOf("\n")); // Only up to the newline
+    println(input);
     data = int(split(input, ' ')); // Split values into an array
-    println("hai "+data[0]+" "+data[1]+" "+data[2]);
-    IDs[data[1]][data[2]] = data[0];
-    //data[0], data[1], data[2], data[3]
+    if ("changeTo".equals(split(input, ' ')[0])) {
+      IDs[data[2]][data[3]] = data[1];
+    }
+    //println(data[0]+" "+data[1]+" "+data[2]);
   }
 }
 
@@ -72,6 +89,12 @@ void hexagon(float x, float y, float radius) {
   endShape(CLOSE);
 }
 
+void keyPressed() {
+  if (key == ' ') {
+    c.write("ready "+num+"\n");
+  }
+}
+
 void mouseClicked() {
   int j = (int)(mouseY/(size*1.5));
   int i = (int)(mouseX/(((size*0.87)*2))-(j%2)*0.5);
@@ -79,7 +102,7 @@ void mouseClicked() {
     run = !run;
   else if (i>=0&&j>=0) {
     //IDs[i][j] = ausgewaehlt;
-    c.write("1 "+i+" "+j+ "\n");
+    c.write("change "+num+" "+i+" "+j+ "\n");
   }
   println(i+" "+j);
   //mach Mauszeug hier!
