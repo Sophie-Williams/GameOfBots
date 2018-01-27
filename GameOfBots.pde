@@ -21,30 +21,7 @@ void draw() {
     IDs = Helper.step(IDs, this);
     last = frameCount;
   }
-  background(255);
-  for (int i=0; i<sizeX; i++) {
-    for (int j=0; j<sizeX; j++) {
-      if (IDs[i][j] == 1)
-        fill(247, 62, 45);
-      else if (IDs[i][j] == 2)
-        fill(245, 232, 67);
-      else if (IDs[i][j] == 3)
-        fill(115, 227, 53);
-      else if (IDs[i][j] == 4)
-        fill(72, 245, 247);
-      else if (IDs[i][j] == 5)
-        fill(63, 122, 247);
-      else if (IDs[i][j] == 6)
-        fill(235, 133, 251);
-      else if (IDs[i][j] == -1)
-        fill(255);
-      else
-        fill(220);
-      hexagon(i*((size*0.87)*2)+((j%2)*(size*0.87))+(size*0.87), j*(size*1.5)+size, size);
-      fill(16, 80, 167);
-      text(i+"|"+j, i*((size*0.87)*2)+((j%2)*(size-5))+(size-5)-11, j*(size*1.5)+size+7);
-    }
-  }
+  paint();
 
   //println(frameRate);
 }
@@ -109,11 +86,11 @@ void keyPressed() {
   }
 }
 
-void doOnce() {
-  IDs = Helper.step(IDs, this);
+void paint() {
   background(255);
   for (int i=0; i<sizeX; i++) {
     for (int j=0; j<sizeX; j++) {
+      stroke(0);
       if (IDs[i][j] == 1)
         fill(247, 62, 45);
       else if (IDs[i][j] == 2)
@@ -128,13 +105,20 @@ void doOnce() {
         fill(235, 133, 251);
       else if (IDs[i][j] == -1)
         fill(255);
-      else
-        fill(220);
+      else {
+        noFill();
+        noStroke();
+      }
       hexagon(i*((size*0.87)*2)+((j%2)*(size*0.87))+(size*0.87), j*(size*1.5)+size, size);
       fill(16, 80, 167);
       text(i+"|"+j, i*((size*0.87)*2)+((j%2)*(size-5))+(size-5)-11, j*(size*1.5)+size+7);
     }
   }
+}
+
+void doOnce() {
+  IDs = Helper.step(IDs, this);
+  paint();
 }
 
 void hexagon(float x, float y, float radius) {
