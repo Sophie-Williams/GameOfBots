@@ -1,0 +1,2 @@
+22.1: Spielidee aufschreiben
+25.1: Git & Processing crash course für Alexander
