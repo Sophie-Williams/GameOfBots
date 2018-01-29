@@ -1,0 +1,18 @@
+Netzwerkprotokoll:
+Jeder Client gibt sich selbst eine UUID von 20 bis 120
+
+Die Pakete starten mit einem Befehl, dann kommt die UUID des Clients, wenn einer die Nachricht sendet und dann die Argumente:
+
+Begrüßung:
+Client:  hello UUID \n
+Server: hello UUID OK\n oder hello UUID gameStarted\n oder hello UUID UUIDBelegt
+
+Ein Feld ändern (von einem Client aus):
+Client: change UUID X-Koordinate Y-Koordinate\n
+Server: OK UUID\n oder NO UUID\n
+
+Ein Feld ändern (vom Server aus):
+Server: changeTo X-Koordinate Y-Koordinate SpielerNummer\n
+
+Client erklärt sich als Fertig:
+Client: ready UUID\n
