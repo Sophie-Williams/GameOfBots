@@ -1,4 +1,3 @@
-import processing.net.*;
 import java.util.Arrays;
 
 int size = 30;
@@ -11,8 +10,6 @@ boolean gameStarted = false;
 ArrayList<Integer> players = new ArrayList<Integer>();
 ArrayList<Integer> visitors = new ArrayList<Integer>();
 
-Server s;
-Client c;
 String input;
 int data[];
 
@@ -24,7 +21,7 @@ void setup()
   IDs = Helper.fillIDs(IDs);
   IDs[4][2] = 2;
   frameRate(30);
-  s = new Server(this, 12345); // Start a simple server on a port
+  //make a server
 }
 
 void draw() 
@@ -60,29 +57,22 @@ void draw()
     ArrayList<int[]> Diff = Helper.getDifference(IDs, newIDs);
     IDs = newIDs;
     for (int[] d : Diff){
-      s.write("changeTo "+IDs[d[0]][d[1]]+" "+d[0]+" "+d[1]+"\n");
+      //tell clients which fields they're supposed to change
       delay(100); //sonst klappt das nicht
     }
     gameStarted = false;
     for (int i=0; i<PlayersReady.length; i++)
       PlayersReady[i] = false;
   }
-  c = s.available();
-  if (c != null) {
-    input = c.readString();
-    input = input.substring(0, input.indexOf("\n")); // Only up to the newline
-    println(input);
-    if ("hello".equals(split(input, ' ')[0]))
-      newPlayer(int(split(input, ' ')[1]));
-    else if ("change".equals(split(input, ' ')[0])) 
-      change(input);
-    else if ("ready".equals(split(input, ' ')[0])) {
-      data = int(split(input, ' '));
-      PlayersReady[players.indexOf(data[1])] = true;
-      //^muss noch besser
-      gameStarted = true;
-    }
-  }
+  //if (are there messages waiting to be read?) {
+    //read current messages input = ;
+    // split the input up into individual commands  input = input.substring(0, input.indexOf("\n")); // Only up to the newline
+      // and print the entire thing                 println(input);
+    //interpret the input
+      //do a login thingy
+      //change a cell's color
+      // check if players are ready
+  //}
 }
 
 void change(String input) {
@@ -91,19 +81,19 @@ void change(String input) {
   println(PlayerNow+" "+data[2]+" "+data[3]+" ");
   if (IDs[data[2]][data[3]] == PlayerNow) {
     IDs[data[2]][data[3]] = -1;
-    s.write(-1+" "+data[2]+" "+data[3]+"\n");
+    //set owner of the cell to nobody
   } else if (IDs[data[2]][data[3]] == -1) {
     IDs[data[2]][data[3]] = PlayerNow;
-    s.write("changeTo "+PlayerNow+" "+data[2]+" "+data[3]+"\n");
+    //set owner of the cell to the player specified in the input string
   }
 }
 void newPlayer(int num) {
   if (players.size() < 6 && !gameStarted) {
     players.add(num);
     visitors.add(num);
-    s.write("hello "+num+" OK\n");
+    // send confirmation of the connection request;
   } else {
-    s.write("hello "+num+" gameStarted\n");
+    //send confirmation of the connection request, and inform the clients the game has started
     visitors.add(num);
   }
 }

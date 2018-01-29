@@ -1,9 +1,3 @@
-import processing.net.*;
-
-Client c;
-String input;
-int data[];
-
 int size = 30;
 int sizeX = 15;
 int sizeY = 15;
@@ -22,12 +16,10 @@ void setup()
   IDs = Helper.fillIDs(IDs);
   IDs[4][2] = 2;
   frameRate(30);
-  c = new Client(this, "127.0.0.1", 12345); // Replace with your server's IP and port
   num = (int)(random(100))+20;
-  c.write("hello "+ num + "\n");
-  while (c.available() == 0)
-    delay(10);
-  input = c.readString();
+  //c.write("hello "+ num + "\n");
+  //warten bis antwort kommt / es etwas zum lesen gibt
+  String input = "irgendwas einigermaßen sinnvolles"; //liest neue nachrichten. idealerweise.
   input = input.substring(0, input.indexOf("\n")); // Only up to the newline
   if ("hello".equals(split(input, ' ')[0])) {
     println("hi");
@@ -66,16 +58,7 @@ void draw() {
   }
 
 
-  if (c.available() > 0) {
-    input = c.readString();
-    input = input.substring(0, input.indexOf("\n")); // Only up to the newline
-    println(input);
-    data = int(split(input, ' ')); // Split values into an array
-    if ("changeTo".equals(split(input, ' ')[0])) {
-      IDs[data[2]][data[3]] = data[1];
-    }
-    //println(data[0]+" "+data[1]+" "+data[2]);
-  }
+  //data handling / command interpretation
 }
 
 void hexagon(float x, float y, float radius) {
