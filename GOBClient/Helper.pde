@@ -1,6 +1,6 @@
 public static class Helper
 {
-  public static int[][] step(int[][] IDs, GameOfBots GOB) {
+  public static int[][] step(int[][] IDs, GOBClient GOB) {
 
     int[][] newIDs = new int[IDs.length][IDs[0].length];
 
@@ -70,7 +70,7 @@ public static class Helper
     return nb;
   }
 
-  private static boolean isInsideBoard(int i, int j, GameOfBots GOB) {
+  private static boolean isInsideBoard(int i, int j, GOBClient GOB) {
     return i >= 0 && i < GOB.sizeX && j >= 0 && j < GOB.sizeY
       && GOB.IDs[i][j] != 0;
   }
