@@ -1,2 +1,4 @@
 22.1: Spielidee aufschreiben
 25.1: Git & Processing crash course für Alexander
+ 1.2: Spiel programmieren
+ 8.2: Tensorflow dokumentation studieren
