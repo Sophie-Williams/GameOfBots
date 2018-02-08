@@ -1,4 +1,4 @@
-public class Net {
+public class Net { //a fully connected neural net for GOB
     float[][] l0 = new float[10][10];
     float[][] l1 = new float[l0[0].length][3];
     public Net() {

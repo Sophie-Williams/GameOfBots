@@ -1,4 +1,4 @@
-public class GOBBot
+public class GOBBot //a first Bot for GOB
 {
     public Net net;
     int sizeX = 15;
