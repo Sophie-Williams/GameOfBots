@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=GOBBot
+comment1.params=weight
+comment1.target=GOBBot(float)
+comment2.params=
+comment2.target=void\ updaten()
+comment2.text=public\ GOBBot(float\ weight,\ float[][]\ l0,\ float[][]\ l1,\ float\ r,float\ g,\ float\ b)\r\n\ \ \ \ {\r\n\ \ \ \ d\=random(TAU);\r\n\ \ \ \ s\=random(1);\r\n\ \ \ \ net\ \=\ new\ Net();\r\n}
+numComments=3

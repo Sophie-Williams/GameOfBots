@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Net
+comment1.params=
+comment1.target=Net()
+comment2.params=ol0\ ol1
+comment2.target=Net(float[][],\ float[][])
+comment3.params=input
+comment3.target=float[]\ update(float[])
+numComments=4
