@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=GoBClient
+comment0.text=\n\ Write\ a\ description\ of\ class\ GoBClient\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=GoBClient()
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ GoBClient\n
+comment2.params=pMessage
+comment2.target=void\ processMessage(java.lang.String)
+comment3.params=forced
+comment3.target=void\ readyTurn(boolean)
+comment3.text=\n\ signals\ the\ server\ that\ this\ player\ is\ done\ with\ their\ turn.\ if\ forced\ is\ set\ to\ true,\ the\ next\ turn\n\ is\ executed\ regardless\ of\ the\ other\ players'\ status.\n
+numComments=4
