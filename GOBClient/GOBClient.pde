@@ -79,11 +79,12 @@ void draw() {
 }
 
 void hexagon(float x, float y, float radius) {
-  float angle = 1.0471975512;
+  float[][] vets = {{0.8660254, 0.5}, {0, 1.0}, {-0.8660254, 0.5}, 
+    {-0.8660254, -0.5}, {0, -1.0}, {0.8660253, -0.5}, {0.8660256, 0.5}};
   beginShape();
-  for (float a = angle/2; a < TWO_PI+angle/2; a += angle) {
-    float sx = x + cos(a) * radius;
-    float sy = y + sin(a) * radius;
+  for (int i=0; i<7; i++) {
+    float sx = x + vets[i][0] * radius;
+    float sy = y + vets[i][1] * radius;
     vertex(sx, sy);
   }
   endShape(CLOSE);
