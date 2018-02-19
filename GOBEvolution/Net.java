@@ -16,6 +16,17 @@ public class Net { //a fully connected neural net for GOB
         l0 = ol0;
         l1 = ol1;
     }
+    
+    public randomize(double amount) {
+        for (int i=0; i<l0.length; i++) {
+            for (int j=0; j<l0[0].length; j++)
+                l0[i][j] = l0[i][j]+(float)(Math.random()*amount)-(amount/2);
+        }
+        for (int i=0; i<l1.length; i++) {
+            for (int j=0; j<l1[0].length; j++)
+                l1[i][j] = l1[i][j]+(float)(Math.random()*amount)-(amount/2);
+        }
+    }
 
     public float[] update(float[] input) {
         if (input.length != l0[0].length)
