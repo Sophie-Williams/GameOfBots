@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=GoBServer
+comment0.text=\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ GoBServer.\n\ \n\ @author\ (Ihr\ Name)\ \n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\n
+comment1.params=
+comment1.target=GoBServer()
+comment1.text=\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ GoBServer\n
+comment2.params=string\ i
+comment2.target=void\ processClosingConnection(java.lang.String,\ int)
+comment2.text=\n\ is\ eventually\ going\ to\ replace\ the\ player\ with\ a\ bot\n
+comment3.params=stringa\ i\ stringb
+comment3.target=void\ processMessage(java.lang.String,\ int,\ java.lang.String)
+comment3.text=\n\ the\ clients\ only\ send\ when\ a\ player\ places\ a\ live\ cell;\ that\ information\ then\ only\ needs\ to\ be\ distributed\n\ to\ the\ other\ clients\n
+comment4.params=string\ i
+comment4.target=void\ processNewConnection(java.lang.String,\ int)
+comment4.text=\n\ saves\ the\ client\ IDs\ and\ ports\ to\ arrays,\ to\ be\ assigned\ colours\ when\ the\ game\ starts\n
+numComments=5
