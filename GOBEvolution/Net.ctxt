@@ -2,10 +2,10 @@
 comment0.target=Net
 comment1.params=
 comment1.target=Net()
-comment2.params=ol0\ ol1
-comment2.target=Net(float[][],\ float[][])
-comment3.params=ol0\ ol1\ old0\ old1
-comment3.target=Net(float[][],\ float[][],\ float[][],\ float[][])
+comment2.params=ol0\ ol1\ ol2
+comment2.target=Net(float[][],\ float[][],\ float[][])
+comment3.params=ol0\ ol1\ ol2\ old0\ old1\ old2
+comment3.target=Net(float[][],\ float[][],\ float[][],\ float[][],\ float[][],\ float[][])
 comment4.params=amount
 comment4.target=void\ randomize(double)
 comment5.params=input
