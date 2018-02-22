@@ -1,0 +1,8 @@
+Dieses Spiel ist ein Connways Game Of Life auf einem hexagonalem Spielfeld.
+Die einzelnen Spieler haben am Rand des Hauptspielfelds ihre Spielerfelder.
+Die Spieler können nur in ihren eigenen Spielerfeldern Zellen löschen und setzen.
+Das Ziel des Spiels ist es, möglichst viele Zellen seiner eigenen Farbe am Leben zu haben.
+Wenn eine Zelle 0 Nachbarn hat, stirbt sie.
+Wenn eine Zelle 1 oder 2 Nachbarn hat, bleibt sie, wie sie war.
+Wenn eine Zelle 3 oder 4 Nachbarn hat, wird sie belebt (von der Farbe, die die meisten Nachbarn stellt).
+Sonst stirbt sie.
