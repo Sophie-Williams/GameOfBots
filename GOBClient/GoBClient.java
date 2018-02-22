@@ -50,7 +50,7 @@ public class GoBClient extends Client
         }
     }
     
-    /*
+    /**
      * send the server a cellupdate for distribution
      */
     public void cellUpdate(int x, int y, int c){
@@ -58,7 +58,18 @@ public class GoBClient extends Client
             send("CU" + x + y + c);
     }
     
-    /*
+    /**
+     * signals readiness for game start. if forced is set to true, forces the game start
+     */
+    public void readyGame(boolean forced)
+    {
+        if(forced == true)
+            send("NTF");
+        else
+            send("NTO0");
+    }
+    
+    /**
      * signals the server that this player is done with their turn. if forced is set to true, the next turn
      * is executed regardless of the other players' status.
      */

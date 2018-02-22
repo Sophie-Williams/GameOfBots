@@ -29,7 +29,7 @@ public class GoBServer extends Server
         }
     }
     
-    /*
+    /**
      * is eventually going to replace the player with a bot
      */
     public void processClosingConnection(String string, int i){}

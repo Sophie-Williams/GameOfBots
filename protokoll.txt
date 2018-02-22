@@ -1,18 +1,19 @@
-Netzwerkprotokoll:
-Jeder Client gibt sich selbst eine UUID von 20 bis 120
+Netzwerkprotokoll
 
-Die Pakete starten mit einem Befehl, dann kommt die UUID des Clients, wenn einer die Nachricht sendet und dann die Argumente:
+Verbindungsaufbau:
+Server ordnet neuem client eine zahl von 0 bis 6 zu
 
-Begrüßung:
-Client:  hello UUID \n
-Server: hello UUID OK\n oder hello UUID gameStarted\n oder hello UUID UUIDBelegt
+Nachrichten:
 
-Ein Feld ändern (von einem Client aus):
-Client: change UUID X-Koordinate Y-Koordinate\n
-Server: OK UUID\n oder NO UUID\n
+Server -> Client:
+GS + Zuordnung von Clients zu jwl. Farben
+ET (fordert clients auf, den nächsten zug auszuführen)
+CU + XXX + YYY + C (gibt ein cellupdate eines clients an alle clients weiter
 
-Ein Feld ändern (vom Server aus):
-Server: changeTo X-Koordinate Y-Koordinate SpielerNummer\n
+Client -> Server:
+GS + 0/F (erklärt sich bereit für den start. wenn F gesendet wird, erzwingt diesen)
+NT + 0/F (erklärt sich bereit für den nächsten zug. wenn F gesendet wird, erzwingt diesen)
+CU + XXX + YYY + C (teilt dem server ein cellupdate mit, damit dieser es verteilen kann)
 
-Client erklärt sich als Fertig:
-Client: ready UUID\n
+Verbindungsabbruch:
+TODO
