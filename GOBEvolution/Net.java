@@ -1,7 +1,8 @@
 public class Net { //a fully connected neural net for GOB
-    float[][] l0 = new float[50][100];//1st layer:Playfield * 1st internal
+    //der eine ist die SpielerNummer
+    float[][] l0 = new float[51][100];//1st layer:Playfield+1 * 1st internal
     float[][] l1 = new float[l0[0].length][100];//2nd layer:1st internal* 2nd internal
-    float[][] l2 = new float[l1[0].length][50];//2nd layer:2nd internal* Playfield
+    float[][] l2 = new float[l1[0].length][5];//2nd layer:2nd internal* PlayerPlayfield
     public Net() {//initialize randomly from -1 to 1
         for (int i=0; i<l0.length; i++) {
             for (int j=0; j<l0[0].length; j++)

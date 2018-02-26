@@ -43,17 +43,17 @@ void draw() {
   background(255);
   for (int i=0; i<sizeX; i++) {
     for (int j=0; j<sizeX; j++) {
-      if (IDs[i][j] == 1)
+      if (IDs[i][j] == 7)
         fill(247, 62, 45);
-      else if (IDs[i][j] == 2)
+      else if (IDs[i][j] == 8)
         fill(245, 232, 67);
-      else if (IDs[i][j] == 3)
+      else if (IDs[i][j] == 9)
         fill(115, 227, 53);
-      else if (IDs[i][j] == 4)
+      else if (IDs[i][j] == 10)
         fill(72, 245, 247);
-      else if (IDs[i][j] == 5)
+      else if (IDs[i][j] == 11)
         fill(63, 122, 247);
-      else if (IDs[i][j] == 6)
+      else if (IDs[i][j] == 12)
         fill(235, 133, 251);
       else if (IDs[i][j] == -1)
         fill(255);
