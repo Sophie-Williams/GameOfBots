@@ -12,9 +12,11 @@ public class GoBServer extends Server
     int[] IdToPort = new int[6];
     int[] IdToColour = new int[6];
     String[] readyPlayerIP = new String[6];
+    //bot array
     int readyGamePlayers = 0;
     boolean game = false;
     int readyTurnPlayers = 0;
+    int botCount = 0;
     
     /**
      * Konstruktor für Objekte der Klasse GoBServer
@@ -32,7 +34,18 @@ public class GoBServer extends Server
     /**
      * is eventually going to replace the player with a bot
      */
-    public void processClosingConnection(String string, int i){}
+    public void processClosingConnection(String string, int i){
+        for(int p=0;p<6;p++)
+        {
+            if(IdToIP[p].equals(string))
+            {
+                IdToIP[p] = "0";
+                IdToPort[p] = 0;
+            }
+        }
+        //bot
+        botCount++;
+    }
     
     /*
      * the clients only send when a player places a live cell; that information then only needs to be distributed
@@ -160,9 +173,10 @@ public class GoBServer extends Server
                 readyTurnPlayers++;
                 
                 //If all players are ready, the server tells the clients to execute the turn
-                if(readyTurnPlayers == 6)
+                if(readyTurnPlayers == (6 - botCount))
                 {
                     sendToAll("ET");
+                    //loop through the bot array, trigger update functions 
                 }
             }
             
