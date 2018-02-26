@@ -1,3 +1,5 @@
+import java.io.ObjectInputStream;
+import java.io.FileInputStream;
 public static class Helper
 {
   public static int[][] step(int[][] IDs, GOBClient GOB) {
@@ -20,7 +22,7 @@ public static class Helper
             }
           }
           /*if (i==4&&j==4)
-            println(neigbourCounter);*/
+           println(neigbourCounter);*/
           if (neigbourCounter == 0)
             newIDs[i][j] = -1;
           else if (neigbourCounter == 1 || neigbourCounter == 2)
@@ -134,6 +136,19 @@ public static class Helper
     IDs[4][6] = -1;
     IDs[5][6] = -1;
 
+    return IDs;
+  }
+
+  public static int[][] fillIDs(int size)
+  {
+    int[][] IDs = new int[0][0];
+    try {
+      ObjectInputStream in = new ObjectInputStream(new FileInputStream(size+".dat"));
+      IDs = (int[][]) in.readObject();
+      in.close();
+    }
+    catch(Exception e) {
+    }
     return IDs;
   }
 }
