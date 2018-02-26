@@ -6,3 +6,7 @@
       -Angefangen das Training zu programmieren
 22.2: -3. Layer zum NN hinzufügen
       -Training zuende programmieren
+26.2: -IDs der reservierten Felder ändern
+      -Verschiedene Feldergrößen zeichnen
+      -Filereader für verschiedene Feldergrößen hinzufügen
+      -Struktur des NN verbessern
