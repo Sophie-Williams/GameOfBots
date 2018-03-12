@@ -1,4 +1,4 @@
-﻿22.1: Spielidee aufschreiben
+22.1: Spielidee aufschreiben
 25.1: Git & Processing crash course für Alexander
  1.2: Spiel programmieren
  8.2: Neuronales Netzwerk programmieren
@@ -10,3 +10,5 @@
       -Verschiedene Feldergrößen zeichnen
       -Filereader für verschiedene Feldergrößen hinzufügen
       -Struktur des NN verbessern
+08.3: -GameDesigner Programmiert + einige Größen gespeichert
+12.3: -Dukumentation vollenden
