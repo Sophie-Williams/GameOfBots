@@ -1,7 +1,8 @@
-int size = 30;
-int sizeX = 15;
-int sizeY = 15;
-int[][] IDs = new int[sizeX][sizeY];
+int size = 30;//die Größe der Felder
+int sizeX = 15;//wie viele Felder gibt es in X-Richtung?
+int sizeY = 15;//wie viele Felder gibt es in Y-Richtung?
+int[][] IDs = new int[sizeX][sizeY];//Das Spielfeld an sich:
+            //Speichert die IDs der Felder ab
 long last = 0;
 boolean run = false;
 int ausgewaehlt = 0;
@@ -11,7 +12,7 @@ void setup() {
   size(828, 725);
   background(255);
   textSize(15);
-  IDs = Helper.fillIDs(IDs);
+  IDs = Helper.fillIDs(IDs);//Fülle das Spielfeld
   IDs[4][2] = 2;
   frameRate(30);
 }
@@ -38,7 +39,7 @@ void mouseClicked() {
 }
 
 void keyPressed() {
-  if (key == '0') {
+  if (key == '0') {//Wähle eine ID aus, um sie zu setzen
     ausgewaehlt = 0;
   }
   if (key == '1') {
@@ -62,7 +63,7 @@ void keyPressed() {
   if (key == '7') {
     ausgewaehlt = -1;
   }
-  if (key == '+') {
+  if (key == '+') {//verändere die Geschwindigkeit
     if (speed > 0)
       speed--;
     println(speed);
@@ -71,13 +72,13 @@ void keyPressed() {
     speed++;
     println(speed);
   }
-  if (key == 'r') {
+  if (key == 'r') {//Starte und stoppe das Spiel
     run = !run;
   }
-  if (key == ' ') {
+  if (key == ' ') {//Gehe einen Schritt
     doOnce();
   }
-  if (key == 'd') {//delete
+  if (key == 'd') {//Lösche alles
     for (int i=0; i<sizeX; i++) {
       for (int j=0; j<sizeX; j++) {
         IDs[i][j] = -1;
@@ -86,7 +87,7 @@ void keyPressed() {
   }
 }
 
-void paint() {
+void paint() {//Male
   background(255);
   for (int i=0; i<sizeX; i++) {
     for (int j=0; j<sizeX; j++) {

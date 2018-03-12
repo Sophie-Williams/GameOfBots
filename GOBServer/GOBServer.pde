@@ -1,12 +1,13 @@
-import processing.net.*;
-import java.util.Arrays;
+import processing.net.*;//Die alte Netzwerkimplementation
+import java.util.Arrays;//Arrayfunktionen
 
-int size = 30;
-int sizeX = 15;
-int sizeY = 15;
-int[][] IDs = new int[sizeX][sizeY];
-boolean[] PlayersReady = new boolean[1];
-boolean gameStarted = false;
+int size = 30;//die Größe der Felder
+int sizeX = 15;//wie viele Felder gibt es in X-Richtung?
+int sizeY = 15;//wie viele Felder gibt es in Y-Richtung?
+int[][] IDs = new int[sizeX][sizeY];//Das Spielfeld an sich:
+            //Speichert die IDs der Felder ab
+boolean[] PlayersReady = new boolean[1];//Wie viele Spieler sind fertig?
+boolean gameStarted = false;//Hat das Spiel begonnen?
 
 ArrayList<Integer> players = new ArrayList<Integer>();
 ArrayList<Integer> visitors = new ArrayList<Integer>();
@@ -24,14 +25,14 @@ void setup()
   IDs = Helper.fillIDs(IDs);
   IDs[4][2] = 2;
   frameRate(30);
-  s = new Server(this, 12345); // Start a simple server on a port
+  s = new Server(this, 12345); //Server auf Port 12345 starten
 }
 
 void draw() 
 {
   background(255);
   for (int i=0; i<sizeX; i++) {
-    for (int j=0; j<sizeX; j++) {
+    for (int j=0; j<sizeX; j++) {//Malen
       if (IDs[i][j] == 1)
         fill(247, 62, 45);
       else if (IDs[i][j] == 2)
@@ -56,10 +57,11 @@ void draw()
 
 
   if (/*Arrays.asList(PlayersReady).contains(false) && */gameStarted) {
-    int[][] newIDs = Helper.step(IDs, this);
-    ArrayList<int[]> Diff = Helper.getDifference(IDs, newIDs);
+    //wenn das Spiel begonnen hat
+    int[][] newIDs = Helper.step(IDs, this);//Gehe einen Schritt
+    ArrayList<int[]> Diff = Helper.getDifference(IDs, newIDs);//gib den Unterschied
     IDs = newIDs;
-    for (int[] d : Diff){
+    for (int[] d : Diff){//allen Clients
       s.write("changeTo "+IDs[d[0]][d[1]]+" "+d[0]+" "+d[1]+"\n");
       delay(100); //sonst klappt das nicht
     }
@@ -68,9 +70,9 @@ void draw()
       PlayersReady[i] = false;
   }
   c = s.available();
-  if (c != null) {
-    input = c.readString();
-    input = input.substring(0, input.indexOf("\n")); // Only up to the newline
+  if (c != null) {//wenn irgendwas gesendet wurde
+    input = c.readString();//Lese
+    input = input.substring(0, input.indexOf("\n")); //bis \n
     println(input);
     if ("hello".equals(split(input, ' ')[0]))
       newPlayer(int(split(input, ' ')[1]));

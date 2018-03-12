@@ -4,8 +4,9 @@ int size = 30;
 int num = 3;
 int sizeX = 13;
 int sizeY = sizeX;
-int[][] IDs = new int[sizeX][sizeY];
-int ausgewaehlt = -1;
+int[][] IDs = new int[sizeX][sizeY];//Das Spielfeld an sich:
+            //Speichert die IDs der Felder ab
+int ausgewaehlt = -1;//Welche ID setze ich grade?
 void setup() {
   size(828, 725);
   background(255);
@@ -15,9 +16,9 @@ void setup() {
 void draw() {
   background(255);
   for (int i=0; i<sizeX; i++) {
-    for (int j=0; j<sizeX; j++) {
-      if (IDs[i][j] == 1)
-        fill(247, 62, 0);
+    for (int j=0; j<sizeX; j++) {//geht alle Felder durch
+      if (IDs[i][j] == 1)//und malt sie in ihrer respektiven
+        fill(247, 62, 0);//Farbe an
       else if (IDs[i][j] == 2)
         fill(245, 232, 0);
       else if (IDs[i][j] == 3)
@@ -52,19 +53,19 @@ void draw() {
 }
 
 void keyPressed() {
-  if (key == ' ') {
+  if (key == ' ') {//bei einer Leertaste
     print("Write!");
-    try {
+    try {//versuche die IDs abzuspeichern
       ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("/Users/lukas/dats/"+num+".dat"));
       outputStream.writeObject(IDs);
       outputStream.close();
     }
-    catch(Exception e) {
+    catch(Exception e) {//Mist!
       print(e);
     }
   }
-  if (key == '0') {
-    ausgewaehlt = 0;
+  if (key == '0') {//Wähle eine Farbe/ID aus
+    ausgewaehlt = 0;//Die Wand
   }
   if (key == '1') {
     ausgewaehlt = 1;
@@ -103,7 +104,7 @@ void keyPressed() {
     ausgewaehlt = 12;
   }
   if (key == '-') {
-    ausgewaehlt = -1;
+    ausgewaehlt = -1;//Ein Leeres Feld
   }
 }
 
@@ -111,12 +112,11 @@ void mouseClicked() {
   int j = (int)(mouseY/(size*1.5));
   int i = (int)(mouseX/(((size*0.87)*2))-(j%2)*0.5);
   if ((i>=0&&j>=0) && (i<=(sizeX-1)&&j<=(sizeY-1))) {//ist der Klick im Spielfeld?
-    IDs[i][j] = ausgewaehlt;
+    IDs[i][j] = ausgewaehlt;//Dann setze das Spielfeld auf die ausgewählte ID
   }
   println(i+" "+j);
-  //mach Mauszeug hier!
 }
-void hexagon(float x, float y, float radius) {
+void hexagon(float x, float y, float radius) {//Male ein Hexagon
   float angle = 1.0471975512;
   beginShape();
   for (float a = angle/2; a < TWO_PI+angle/2; a += angle) {
